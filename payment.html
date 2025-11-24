@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Brew Home — Payment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{--bg:#fffdf9;--muted:#7e6c5f;--accent:#7b4f32;--card-shadow:0 12px 30px rgba(18,18,18,0.06)}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter;background:linear-gradient(180deg,#fff,#fbf7f3);color:#1f1f1f}
+.container{max-width:1000px;margin:0 auto;padding:24px}
+.header{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+.logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,#caa07a,#f0d4b0);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff}
+.nav a{margin-left:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 340px;gap:18px;margin-top:18px}
+.card{background:#fff;padding:14px;border-radius:12px;border:1px solid rgba(27,27,27,0.03);box-shadow:var(--card-shadow)}
+.form input,.form textarea,.form select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(27,27,27,0.06);margin-bottom:12px}
+.btn{padding:10px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+.btn-primary{background:linear-gradient(90deg,#7b4f32,#c78b5a);color:white;width:100%}
+.small{color:var(--muted);font-size:13px}
+@media (max-width:900px){ .grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<header class="container header">
+  <div style="display:flex;gap:12px;align-items:center">
+    <div class="logo">BH</div>
+    <div><h2 style="margin:0">Brew Home</h2><div style="color:var(--muted);font-size:13px">Checkout</div></div>
+  </div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h2 style="font-family:'Playfair Display',serif;margin:0">Complete your Booking</h2>
+  <p class="small" style="margin-top:6px">Fill your details and confirm. Payment is simulated for demo purposes.</p>
+
+  <div class="grid">
+    <section class="card form">
+      <form id="checkout-form">
+        <label>Full name</label>
+        <input name="name" type="text" placeholder="Your name" required>
+
+        <label>Phone</label>
+        <input name="phone" type="tel" placeholder="+91 9XXXXXXXXX" required>
+
+        <label>Email</label>
+        <input name="email" type="email" placeholder="you@domain.com" required>
+
+        <label>Address</label>
+        <textarea name="address" rows="3" placeholder="Delivery or pickup address (optional)"></textarea>
+
+        <label>Payment method (simulated)</label>
+        <select name="method">
+          <option value="card">Card (simulated)</option>
+          <option value="upi">UPI</option>
+          <option value="cod">Cash on Delivery</option>
+        </select>
+
+        <button class="btn btn-primary" type="submit">Confirm & Pay</button>
+      </form>
+    </section>
+
+    <aside class="card">
+      <h4 style="margin:0 0 8px">Order Summary</h4>
+      <div id="order-list" style="margin-bottom:12px"></div>
+      <div style="display:flex;justify-content:space-between;color:var(--muted)"><div>Subtotal</div><div id="sub">₹0</div></div>
+      <div style="display:flex;justify-content:space-between;color:var(--muted);margin-top:6px"><div>Shipping</div><div id="ship">₹0</div></div>
+      <div style="display:flex;justify-content:space-between;font-weight:900;font-size:18px;margin-top:10px"><div>Total</div><div id="tot">₹0</div></div>
+      <div style="margin-top:10px;color:var(--muted);font-size:13px">Note: This demo stores an order in localStorage and redirects to the thank you page.</div>
+    </aside>
+  </div>
+</main>
+
+<script>
+(function(){
+  const KEY='brew_cart_v2';
+  function read(){ try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]} }
+  function clear(){ localStorage.removeItem(KEY) }
+  function generateOrderId(){
+    const p='BH'; const r=Math.random().toString(36).slice(2,8).toUpperCase(); const t=Date.now().toString(36).slice(-5).toUpperCase();
+    return `${p}-${r}-${t}`;
+  }
+
+  function renderSummary(){
+    const cart = read();
+    const list = document.getElementById('order-list');
+    list.innerHTML = '';
+    if(cart.length===0){ list.innerHTML='<div style="color:var(--muted)">Cart is empty. Add items to proceed.</div>'; document.getElementById('sub').textContent='₹0'; document.getElementById('ship').textContent='₹0'; document.getElementById('tot').textContent='₹0'; return; }
+    let subtotal=0;
+    cart.forEach(it=>{
+      subtotal += it.price*(it.qty||1);
+      const el = document.createElement('div');
+      el.style.display='flex'; el.style.justifyContent='space-between'; el.style.marginBottom='8px';
+      el.innerHTML = `<div><strong>${it.title}</strong><div style="color:var(--muted);font-size:13px">Qty: ${it.qty||1}</div></div><div style="font-weight:800">₹${it.price}</div>`;
+      list.appendChild(el);
+    });
+    const shipping = subtotal>0 ? 50 : 0;
+    document.getElementById('sub').textContent = `₹${subtotal.toFixed(0)}`;
+    document.getElementById('ship').textContent = `₹${shipping}`;
+    document.getElementById('tot').textContent = `₹${(subtotal+shipping).toFixed(0)}`;
+  }
+
+  document.addEventListener('DOMContentLoaded', renderSummary);
+
+  document.getElementById('checkout-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    const email = form.email.value.trim();
+    if(!name || !phone || !email){ alert('Please fill name, phone and email'); return; }
+    const orderId = generateOrderId();
+    const payload = {
+      orderId, name, phone, email,
+      address: form.address.value.trim(),
+      method: form.method.value,
+      cart: read(),
+      total: document.getElementById('tot').textContent
+    };
+    // store last order for thankyou details
+    localStorage.setItem('brew_last_order', JSON.stringify(payload));
+    // clear cart for demo
+    clear();
+    // redirect
+    window.location.href = `thankyou.html?orderId=${encodeURIComponent(orderId)}`;
+  });
+})();
+</script>
+
+</body>
+</html>
