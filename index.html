@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brew Home — Welcome</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #9aa5b1;
+      --accent: #f6bd60;
+    }
+    body {
+      margin: 0;
+      font-family: Inter;
+      background: linear-gradient(180deg, var(--bg), #071018);
+      color: #e6eef6;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 40px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: "Playfair Display";
+    }
+
+    .navlinks a { margin-left: 18px; color: var(--muted); }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 70px;
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display";
+      font-size: 60px;
+      margin-bottom: 10px;
+    }
+    .hero p { color: var(--muted); margin-bottom: 20px; font-size: 18px; }
+
+    .btn {
+      padding: 14px 28px;
+      background: var(--accent);
+      border-radius: 10px;
+      color: #071018;
+      font-weight: 700;
+    }
+
+    .product-preview {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 50px 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      width: 260px;
+      padding: 15px;
+      border-radius: 14px;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 60px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">Brew Home</div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="cart.html">Cart</a>
+      <a href="payment.html">Payment</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Your Home for Better Coffee</h1>
+    <p>Warm brews. Cozy vibes. Freshly crafted for you.</p>
+    <a href="products.html" class="btn">Shop Now</a>
+  </section>
+
+  <section class="product-preview">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13" />
+      <h3>Classic Cappuccino</h3>
+      <p>$4.99</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" />
+      <h3>Caramel Latte</h3>
+      <p>$5.99</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" />
+      <h3>Cold Brew</h3>
+      <p>$3.99</p>
+    </div>
+  </section>
+
+  <footer>
+    © Brew Home • All Rights Reserved
+  </footer>
+
+</body>
+</html>
