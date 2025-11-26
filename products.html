@@ -1,244 +1,245 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Brew Home — Products</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brew Home — Our Products</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet" />
 
-<style>
-:root{
-  --bg:#fffdf9;--muted:#7e6c5f;--accent:#7b4f32;--card-shadow:0 12px 30px rgba(18,18,18,0.06);
-  --radius:12px;--sans:'Inter',system-ui;-webkit-font-smoothing:antialiased
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:var(--sans);background:linear-gradient(180deg,#fff,#fbf7f3);color:#1f1f1f}
-.container{max-width:1100px;margin:0 auto;padding:24px}
-.header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.brand{display:flex;gap:12px;align-items:center}
-.logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,#caa07a,#f0d4b0);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff}
-.nav{display:flex;gap:12px;align-items:center}
-.nav a{color:var(--muted);font-weight:600}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px}
-.card{background:#fff;border-radius:12px;padding:12px;border:1px solid rgba(27,27,27,0.03);box-shadow:var(--card-shadow)}
-.card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
-.card h3{margin:10px 0 6px;font-size:16px}
-.card p{margin:0;color:var(--muted);font-size:13px}
-.foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
-.btn{padding:9px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
-.btn-add{background:transparent;border:1px solid rgba(27,27,27,0.06);color:var(--muted)}
-.btn-book{background:linear-gradient(90deg,#7b4f32,#c78b5a);color:white}
-.footer{margin-top:30px;padding:20px 0;border-top:1px solid rgba(27,27,27,0.04);color:var(--muted)}
-@media (max-width:880px){ .container{padding:12px} }
-</style>
+  <style>
+    :root {
+      --accent: #d7a86e;
+      --light: #f7f3ef;
+      --dark: #2a1f17;
+      --overlay: rgba(0,0,0,0.55);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop') no-repeat center fixed;
+      background-size: cover;
+    }
+
+    body:before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(2px);
+      z-index: 1;
+    }
+
+    * { position: relative; z-index: 2; }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 25px 50px;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: Pacifico;
+      font-size: 50px;
+      color: var(--accent);
+      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .navlinks a {
+      margin-left: 24px;
+      color: var(--light);
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    /* MAIN TITLE */
+    h1 {
+      text-align: center;
+      font-size: 42px;
+      margin-top: 20px;
+      color: var(--light);
+      text-shadow: 0 3px 10px rgba(0,0,0,0.7);
+    }
+
+    h2.section-title {
+      margin: 40px 0 10px 30px;
+      font-size: 32px;
+      color: var(--accent);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 25px;
+      padding: 20px 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.85);
+      padding: 15px;
+      border-radius: 14px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin: 8px 0;
+      color: var(--dark);
+      font-size: 20px;
+    }
+
+    .price {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      background: var(--accent);
+      color: var(--dark);
+      border-radius: 8px;
+      margin: 4px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--light);
+    }
+  </style>
 </head>
+
 <body>
 
-<header class="container header">
-  <div class="brand">
-    <div class="logo">BH</div>
-    <div>
-      <h1 style="margin:0;font-size:18px">Brew Home</h1>
-      <div style="color:var(--muted);font-size:13px">Products</div>
+  <nav>
+    <div class="logo">Brew Home</div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+      <a href="payment.html">Payment</a>
     </div>
-  </div>
-
-  <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
-    <a href="payment.html">Payment</a>
   </nav>
-</header>
 
-<main class="container">
-  <h2 style="font-family:'Playfair Display',serif;margin:6px 0 0">Our Menu</h2>
-  <p style="margin:4px 0 16px;color:var(--muted)">Handcrafted drinks and small-batch beans.</p>
+  <h1>Our Signature Brews & Desserts</h1>
 
-  <section class="grid" id="products-grid">
-    <!-- 10 product cards -->
-    <!-- Product 1 -->
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" alt="Espresso">
-      <h3>Espresso Classic</h3>
-      <p>Pure, intense espresso shot — 30ml.</p>
-      <div class="foot">
-        <strong>₹99</strong>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-add" data-add data-id="p1" data-title="Espresso Classic" data-price="99" data-img="https://images.unsplash.com/photo-1511920170033-f8396924c348">Add to Cart</button>
-          <button class="btn btn-book" data-book data-id="p1" data-title="Espresso Classic" data-price="99" data-img="https://images.unsplash.com/photo-1511920170033-f8396924c348">Book Now</button>
-        </div>
-      </div>
-    </article>
+  <!-- BREWS -->
+  <h2 class="section-title">Brews</h2>
 
-    <!-- Product 2 -->
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1510627498534-cf7e9002facc" alt="Cold Brew">
-      <h3>Iced Cold Brew</h3>
-      <p>Smooth, low-acid cold brew — 350ml.</p>
-      <div class="foot"><strong>₹179</strong>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-add" data-add data-id="p2" data-title="Iced Cold Brew" data-price="179" data-img="https://images.unsplash.com/photo-1510627498534-cf7e9002facc">Add to Cart</button>
-          <button class="btn btn-book" data-book data-id="p2" data-title="Iced Cold Brew" data-price="179" data-img="https://images.unsplash.com/photo-1510627498534-cf7e9002facc">Book Now</button>
-        </div>
-      </div>
-    </article>
+  <div class="grid">
 
-    <!-- Product 3 -->
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096" alt="Pour Over">
-      <h3>Pour Over</h3>
-      <p>Hand-brewed, clean & floral cup.</p>
-      <div class="foot"><strong>₹229</strong>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-add" data-add data-id="p3" data-title="Pour Over" data-price="229" data-img="https://images.unsplash.com/photo-1498804103079-a6351b050096">Add to Cart</button>
-          <button class="btn btn-book" data-book data-id="p3" data-title="Pour Over" data-price="229" data-img="https://images.unsplash.com/photo-1498804103079-a6351b050096">Book Now</button>
-        </div>
-      </div>
-    </article>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop" />
+      <h3>Caramel Latte</h3>
+      <div class="price">₹180</div>
+      <a class="btn" href="#">Add to Cart</a>
+      <a class="btn" href="payment.html">Buy Now</a>
+    </div>
 
-    <!-- Product 4 -->
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919" alt="Beans">
-      <h3>House Blend Beans (250g)</h3>
-      <p>Medium roast, balanced flavor for daily brew.</p>
-      <div class="foot"><strong>₹499</strong>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-add" data-add data-id="p4" data-title="House Blend Beans" data-price="499" data-img="https://images.unsplash.com/photo-1528825871115-3581a5387919">Add to Cart</button>
-          <button class="btn btn-book" data-book data-id="p4" data-title="House Blend Beans" data-price="499" data-img="https://images.unsplash.com/photo-1528825871115-3581a5387919">Book Now</button>
-        </div>
-      </div>
-    </article>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1464306076886-da185f6a9d05?q=80&w=800&auto=format&fit=crop" />
+      <h3>Hazelnut Cappuccino</h3>
+      <div class="price">₹160</div>
+      <a class="btn" href="#">Add to Cart</a>
+      <a class="btn" href="payment.html">Buy Now</a>
+    </div>
 
-    <!-- Product 5 -->
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1523942839745-7848c839b661" alt="Cappuccino">
-      <h3>Cappuccino</h3>
-      <p>Espresso with textured milk & foam.</p>
-      <div class="foot"><strong>₹199</strong>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-add" data-add data-id="p5" data-title="Cappuccino" data-price="199" data-img="https://images.unsplash.com/photo-1523942839745-7848c839b661">Add to Cart</button>
-          <button class="btn btn-book" data-book data-id="p5" data-title="Cappuccino" data-price="199" data-img="https://images.unsplash.com/photo-1523942839745-7848c839b661">Book Now</button>
-        </div>
-      </div>
-    </article>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1509785307050-d4066910ec1e?q=80&w=800&auto=format&fit=crop" />
+      <h3>Mocha Bliss</h3>
+      <div class="price">₹190</div>
+      <a class="btn" href="#">Add to Cart</a>
+      <a class="btn" href="payment.html">Buy Now</a>
+    </div>
 
-    <!-- Product 6 -->
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0" alt="Vanilla Latte">
-      <h3>Vanilla Latte</h3>
-      <p>Silky latte with vanilla syrup.</p>
-      <div class="foot"><strong>₹249</strong>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-add" data-add data-id="p6" data-title="Vanilla Latte" data-price="249" data-img="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0">Add to Cart</button>
-          <button class="btn btn-book" data-book data-id="p6" data-title="Vanilla Latte" data-price="249" data-img="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0">Book Now</button>
-        </div>
-      </div>
-    </article>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?q=80&w=800&auto=format&fit=crop" />
+      <h3>Vanilla Cold Brew</h3>
+      <div class="price">₹150</div>
+      <a class="btn" href="#">Add to Cart</a>
+      <a class="btn" href="payment.html">Buy Now</a>
+    </div>
 
-    <!-- Product 7 -->
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1524182576065-4e00a6f1e9c5" alt="Mocha">
-      <h3>Mocha</h3>
-      <p>Chocolate & espresso — cozy classic.</p>
-      <div class="foot"><strong>₹269</strong>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-add" data-add data-id="p7" data-title="Mocha" data-price="269" data-img="https://images.unsplash.com/photo-1524182576065-4e00a6f1e9c5">Add to Cart</button>
-          <button class="btn btn-book" data-book data-id="p7" data-title="Mocha" data-price="269" data-img="https://images.unsplash.com/photo-1524182576065-4e00a6f1e9c5">Book Now</button>
-        </div>
-      </div>
-    </article>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1527169402691-a5fd1b135c4f?q=80&w=800&auto=format&fit=crop" />
+      <h3>Espresso Shot</h3>
+      <div class="price">₹120</div>
+      <a class="btn" href="#">Add to Cart</a>
+      <a class="btn" href="payment.html">Buy Now</a>
+    </div>
 
-    <!-- Product 8 -->
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085" alt="Flat White">
-      <h3>Flat White</h3>
-      <p>Velvety microfoam with rich espresso.</p>
-      <div class="foot"><strong>₹219</strong>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-add" data-add data-id="p8" data-title="Flat White" data-price="219" data-img="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085">Add to Cart</button>
-          <button class="btn btn-book" data-book data-id="p8" data-title="Flat White" data-price="219" data-img="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085">Book Now</button>
-        </div>
-      </div>
-    </article>
-
-    <!-- Product 9 -->
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772" alt="Caramel Macchiato">
-      <h3>Caramel Macchiato</h3>
-      <p>Layered goodness with salted caramel.</p>
-      <div class="foot"><strong>₹279</strong>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-add" data-add data-id="p9" data-title="Caramel Macchiato" data-price="279" data-img="https://images.unsplash.com/photo-1541167760496-1628856ab772">Add to Cart</button>
-          <button class="btn btn-book" data-book data-id="p9" data-title="Caramel Macchiato" data-price="279" data-img="https://images.unsplash.com/photo-1541167760496-1628856ab772">Book Now</button>
-        </div>
-      </div>
-    </article>
-
-    <!-- Product 10 -->
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1587733714288-894d1a7b3e7a" alt="Hot Chocolate">
-      <h3>Signature Hot Chocolate</h3>
-      <p>Rich dark chocolate — comforting and warm.</p>
-      <div class="foot"><strong>₹199</strong>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-add" data-add data-id="p10" data-title="Signature Hot Chocolate" data-price="199" data-img="https://images.unsplash.com/photo-1587733714288-894d1a7b3e7a">Add to Cart</button>
-          <button class="btn btn-book" data-book data-id="p10" data-title="Signature Hot Chocolate" data-price="199" data-img="https://images.unsplash.com/photo-1587733714288-894d1a7b3e7a">Book Now</button>
-        </div>
-      </div>
-    </article>
-
-  </section>
-</main>
-
-<footer class="container footer">
-  <div>
-    <strong>Brew Home</strong><br/><span style="color:var(--muted)">Clean modern café • Crafted coffee</span>
   </div>
-  <div style="text-align:right;color:var(--muted)">hello@brewhome.example • +91 98765 43210</div>
-</footer>
 
-<script>
-/* Lightweight cart handling (localStorage) */
-(function(){
-  const KEY = 'brew_cart_v2';
-  function read(){ try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]} }
-  function write(v){ localStorage.setItem(KEY, JSON.stringify(v)) }
-  function add(item){ const cart=read(); cart.push(item); write(cart); updateCount(); }
-  function bookSingle(item){ write([item]); window.location.href='payment.html'; }
-  function updateCount(){ document.getElementById('cart-count').textContent = read().length; }
-  updateCount();
+  <!-- DESSERTS -->
+  <h2 class="section-title">Desserts</h2>
 
-  document.addEventListener('click', function(e){
-    const addBtn = e.target.closest('[data-add]');
-    if(addBtn){
-      const item = {
-        id: addBtn.getAttribute('data-id'),
-        title: addBtn.getAttribute('data-title'),
-        price: Number(addBtn.getAttribute('data-price')||0),
-        img: addBtn.getAttribute('data-img'),
-        qty:1
-      };
-      add(item);
-      addBtn.textContent = 'Added ✓';
-      addBtn.disabled = true;
-      setTimeout(()=>{ addBtn.textContent = 'Add to Cart'; addBtn.disabled = false },1000);
-    }
-    const bookBtn = e.target.closest('[data-book]');
-    if(bookBtn){
-      const item = {
-        id: bookBtn.getAttribute('data-id'),
-        title: bookBtn.getAttribute('data-title'),
-        price: Number(bookBtn.getAttribute('data-price')||0),
-        img: bookBtn.getAttribute('data-img'),
-        qty:1
-      };
-      bookSingle(item);
-    }
-  });
-})();
-</script>
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1505253216365-38d3d8e8cd3f?q=80&w=800&auto=format&fit=crop" />
+      <h3>Chocolate Brownie</h3>
+      <div class="price">₹130</div>
+      <a class="btn">Add to Cart</a>
+      <a class="btn" href="payment.html">Buy Now</a>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?q=80&w=800&auto=format&fit=crop" />
+      <h3>Blueberry Cheesecake</h3>
+      <div class="price">₹220</div>
+      <a class="btn">Add to Cart</a>
+      <a class="btn" href="payment.html">Buy Now</a>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1605479441951-b9556f93b7d3?q=80&w=800&auto=format&fit=crop" />
+      <h3>Caramel Pudding</h3>
+      <div class="price">₹110</div>
+      <a class="btn">Add to Cart</a>
+      <a class="btn" href="payment.html">Buy Now</a>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1606313564200-e75d5ebc40f2?q=80&w=800&auto=format&fit=crop" />
+      <h3>Classic Tiramisu</h3>
+      <div class="price">₹250</div>
+      <a class="btn">Add to Cart</a>
+      <a class="btn" href="payment.html">Buy Now</a>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1610440042657-612c20f83de0?q=80&w=800&auto=format&fit=crop" />
+      <h3>Belgian Waffle</h3>
+      <div class="price">₹180</div>
+      <a class="btn">Add to Cart</a>
+      <a class="btn" href="payment.html">Buy Now</a>
+    </div>
+
+  </div>
+
+  <footer>
+    © Brew Home • Freshly Crafted Delights
+  </footer>
 
 </body>
 </html>
