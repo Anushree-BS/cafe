@@ -1,245 +1,283 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brew Home — Our Products</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet" />
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brew Home</title>
   <style>
-    :root {
-      --accent: #d7a86e;
-      --light: #f7f3ef;
-      --dark: #2a1f17;
-      --overlay: rgba(0,0,0,0.55);
-    }
-
     body {
       margin: 0;
-      padding: 0;
-      font-family: "Poppins", sans-serif;
-      background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop') no-repeat center fixed;
-      background-size: cover;
+      font-family: Arial, sans-serif;
+      background: #f3f0eb;
+      color: #333;
     }
 
-    body:before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(2px);
-      z-index: 1;
-    }
-
-    * { position: relative; z-index: 2; }
-
-    /* NAV */
-    nav {
+    /* HERO */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') center/cover no-repeat;
+      height: 90vh;
       display: flex;
-      justify-content: space-between;
-      padding: 25px 50px;
       align-items: center;
-    }
-
-    .logo {
-      font-family: Pacifico;
-      font-size: 50px;
-      color: var(--accent);
-      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-
-    .navlinks a {
-      margin-left: 24px;
-      color: var(--light);
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 500;
-    }
-
-    /* MAIN TITLE */
-    h1 {
+      justify-content: center;
       text-align: center;
-      font-size: 42px;
-      margin-top: 20px;
-      color: var(--light);
-      text-shadow: 0 3px 10px rgba(0,0,0,0.7);
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero h1 {
+      position: relative;
+      font-size: 3.2rem;
+      color: #ffe9a6;
+      font-weight: bold;
     }
 
-    h2.section-title {
-      margin: 40px 0 10px 30px;
-      font-size: 32px;
-      color: var(--accent);
-      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    /* PRODUCTS PAGE */
+    .section {
+      padding: 40px 8%;
+    }
+    .title {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-bottom: 25px;
+      text-align: left;
     }
 
-    /* GRID */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 25px;
-      padding: 20px 40px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
     }
 
     .card {
-      background: rgba(255,255,255,0.85);
+      background: #fff;
+      border-radius: 12px;
       padding: 15px;
-      border-radius: 14px;
-      backdrop-filter: blur(5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
       text-align: center;
     }
-
     .card img {
       width: 100%;
-      height: 180px;
-      border-radius: 12px;
+      height: 160px;
       object-fit: cover;
-      margin-bottom: 12px;
+      border-radius: 10px;
     }
-
     .card h3 {
-      margin: 8px 0;
-      color: var(--dark);
-      font-size: 20px;
+      margin: 10px 0 5px;
+      font-size: 1.2rem;
     }
-
     .price {
-      color: var(--accent);
-      font-weight: 700;
+      font-weight: bold;
       margin-bottom: 10px;
-      font-size: 18px;
     }
 
-    .btn {
+    .qty-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .qty-box button {
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      background: #d9c09c;
+      cursor: pointer;
+    }
+    .qty-box span {
+      font-size: 1.1rem;
+      width: 25px;
       display: inline-block;
-      padding: 10px 18px;
-      background: var(--accent);
-      color: var(--dark);
-      border-radius: 8px;
-      margin: 4px;
-      text-decoration: none;
-      font-weight: 600;
+      text-align: center;
     }
 
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--light);
+    .add-btn {
+      background: #6b4f34;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .add-btn:hover {
+      background: #513e28;
+    }
+
+    /* CART SIDEBAR */
+    #cartSidebar {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 350px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -4px 0 10px rgba(0,0,0,0.3);
+      padding: 20px;
+      transition: 0.4s;
+      overflow-y: auto;
+      z-index: 2000;
+    }
+    #cartSidebar.open {
+      right: 0;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #ccc;
+    }
+    .cart-item span {
+      font-size: 1rem;
+    }
+
+    .cart-btn {
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      background: #4a3827;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 2100;
     }
   </style>
 </head>
-
 <body>
 
-  <nav>
-    <div class="logo">Brew Home</div>
-    <div class="navlinks">
-      <a href="index.html">Home</a>
-      <a href="cart.html">Cart</a>
-      <a href="payment.html">Payment</a>
-    </div>
-  </nav>
+  <button class="cart-btn" onclick="toggleCart()">Cart 🛒</button>
 
-  <h1>Our Signature Brews & Desserts</h1>
-
-  <!-- BREWS -->
-  <h2 class="section-title">Brews</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=800&auto=format&fit=crop" />
-      <h3>Caramel Latte</h3>
-      <div class="price">₹180</div>
-      <a class="btn" href="#">Add to Cart</a>
-      <a class="btn" href="payment.html">Buy Now</a>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1464306076886-da185f6a9d05?q=80&w=800&auto=format&fit=crop" />
-      <h3>Hazelnut Cappuccino</h3>
-      <div class="price">₹160</div>
-      <a class="btn" href="#">Add to Cart</a>
-      <a class="btn" href="payment.html">Buy Now</a>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1509785307050-d4066910ec1e?q=80&w=800&auto=format&fit=crop" />
-      <h3>Mocha Bliss</h3>
-      <div class="price">₹190</div>
-      <a class="btn" href="#">Add to Cart</a>
-      <a class="btn" href="payment.html">Buy Now</a>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?q=80&w=800&auto=format&fit=crop" />
-      <h3>Vanilla Cold Brew</h3>
-      <div class="price">₹150</div>
-      <a class="btn" href="#">Add to Cart</a>
-      <a class="btn" href="payment.html">Buy Now</a>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1527169402691-a5fd1b135c4f?q=80&w=800&auto=format&fit=crop" />
-      <h3>Espresso Shot</h3>
-      <div class="price">₹120</div>
-      <a class="btn" href="#">Add to Cart</a>
-      <a class="btn" href="payment.html">Buy Now</a>
-    </div>
-
+  <div class="hero">
+    <h1>Crafting Coffee, Crafting Moments</h1>
   </div>
 
-  <!-- DESSERTS -->
-  <h2 class="section-title">Desserts</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1505253216365-38d3d8e8cd3f?q=80&w=800&auto=format&fit=crop" />
-      <h3>Chocolate Brownie</h3>
-      <div class="price">₹130</div>
-      <a class="btn">Add to Cart</a>
-      <a class="btn" href="payment.html">Buy Now</a>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?q=80&w=800&auto=format&fit=crop" />
-      <h3>Blueberry Cheesecake</h3>
-      <div class="price">₹220</div>
-      <a class="btn">Add to Cart</a>
-      <a class="btn" href="payment.html">Buy Now</a>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1605479441951-b9556f93b7d3?q=80&w=800&auto=format&fit=crop" />
-      <h3>Caramel Pudding</h3>
-      <div class="price">₹110</div>
-      <a class="btn">Add to Cart</a>
-      <a class="btn" href="payment.html">Buy Now</a>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1606313564200-e75d5ebc40f2?q=80&w=800&auto=format&fit=crop" />
-      <h3>Classic Tiramisu</h3>
-      <div class="price">₹250</div>
-      <a class="btn">Add to Cart</a>
-      <a class="btn" href="payment.html">Buy Now</a>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1610440042657-612c20f83de0?q=80&w=800&auto=format&fit=crop" />
-      <h3>Belgian Waffle</h3>
-      <div class="price">₹180</div>
-      <a class="btn">Add to Cart</a>
-      <a class="btn" href="payment.html">Buy Now</a>
-    </div>
-
+  <div class="section">
+    <div class="title">Brews</div>
+    <div class="grid" id="brewList"></div>
   </div>
 
-  <footer>
-    © Brew Home • Freshly Crafted Delights
-  </footer>
+  <div class="section">
+    <div class="title">Desserts</div>
+    <div class="grid" id="dessertList"></div>
+  </div>
 
+
+  <!-- CART SIDEBAR -->
+  <div id="cartSidebar">
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <h3 id="cartTotal" style="margin-top:20px;">Total: ₹0</h3>
+  </div>
+
+
+<script>
+// PRODUCT DATA
+const brews = [
+  {name: "Espresso", price: 120, img: "https://images.unsplash.com/photo-1511920170033-f8396924c348"},
+  {name: "Latte", price: 160, img: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9"},
+  {name: "Cappuccino", price: 150, img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93"},
+  {name: "Mocha", price: 170, img: "https://images.unsplash.com/photo-1470337458703-46ad1756a187"}
+];
+
+const desserts = [
+  {name: "Cheesecake", price: 220, img: "https://images.unsplash.com/photo-1505253216365-81e1f3d34b52"},
+  {name: "Brownie", price: 150, img: "https://images.unsplash.com/photo-1601972599720-36938d4ecd59"},
+  {name: "Tiramisu", price: 200, img: "https://images.unsplash.com/photo-1542826438-bd64fe32f35e"},
+  {name: "Croissant", price: 110, img: "https://images.unsplash.com/photo-1589880703245-ff740c52ed51"}
+];
+
+let cart = JSON.parse(localStorage.getItem("brewCart") || "{}");
+
+function saveCart() {
+  localStorage.setItem("brewCart", JSON.stringify(cart));
+}
+
+// RENDER PRODUCTS
+function renderProducts(list, elementId) {
+  const container = document.getElementById(elementId);
+  container.innerHTML = "";
+
+  list.forEach(item => {
+    let qty = 1;
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${item.img}" />
+      <h3>${item.name}</h3>
+      <div class="price">₹${item.price}</div>
+      <div class="qty-box">
+        <button class="minus">-</button>
+        <span class="qDisp">1</span>
+        <button class="plus">+</button>
+      </div>
+      <button class="add-btn">Add to Cart</button>
+    `;
+
+    const minus = card.querySelector('.minus');
+    const plus = card.querySelector('.plus');
+    const qDisp = card.querySelector('.qDisp');
+    const addBtn = card.querySelector('.add-btn');
+
+    minus.onclick = () => { if (qty > 1) { qty--; qDisp.textContent = qty; } };
+    plus.onclick = () => { qty++; qDisp.textContent = qty; };
+
+    addBtn.onclick = () => {
+      if (!cart[item.name]) {
+        cart[item.name] = {price: item.price, qty: 0};
+      }
+      cart[item.name].qty += qty;
+      saveCart();
+      loadCart();
+    };
+
+    container.appendChild(card);
+  });
+}
+
+// CART FUNCTIONS
+function loadCart() {
+  const cartBox = document.getElementById("cartItems");
+  let total = 0;
+  cartBox.innerHTML = "";
+
+  for (let item in cart) {
+    const row = document.createElement("div");
+    row.className = "cart-item";
+
+    let cost = cart[item].price * cart[item].qty;
+    total += cost;
+
+    row.innerHTML = `
+      <span>${item} x ${cart[item].qty}</span>
+      <span>₹${cost}</span>
+    `;
+
+    cartBox.appendChild(row);
+  }
+
+  document.getElementById("cartTotal").textContent = `Total: ₹${total}`;
+}
+
+function toggleCart() {
+  document.getElementById("cartSidebar").classList.toggle("open");
+  loadCart();
+}
+
+
+renderProducts(brews, "brewList");
+renderProducts(desserts, "dessertList");
+loadCart();
+
+</script>
 </body>
 </html>
