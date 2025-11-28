@@ -68,40 +68,23 @@ small{color:var(--muted)}
 <script>
 (function(){
   const KEY = 'brew_cart_v2';
-
-  function read(){ 
-    try { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
-    catch(e){ return []; }
-  }
-
-  function write(v){ 
-    localStorage.setItem(KEY, JSON.stringify(v)); 
-    render();
-    updateHeaderCount();
-  }
-
-  function updateHeaderCount(){
-    const el = document.querySelectorAll('#cart-count');
-    if(el) el.forEach(n => n.textContent = read().length);
-  }
-
+  function read(){ try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]} }
+  function write(v){ localStorage.setItem(KEY, JSON.stringify(v)); render(); updateHeaderCount(); }
+  function updateHeaderCount(){ const el=document.querySelectorAll('#cart-count'); if(el) el.forEach(n=>n.textContent=read().length) }
   function render(){
     const items = read();
     const container = document.getElementById('cart-items');
     container.innerHTML = '';
-
-    if(items.length === 0){
+    if(items.length===0){
       container.innerHTML = '<div style="padding:18px;color:var(--muted)">Your cart is empty. Add items from products.</div>';
       document.getElementById('subtotal').textContent = '₹0';
       document.getElementById('shipping').textContent = '₹0';
       document.getElementById('total').textContent = '₹0';
       return;
     }
-
     let subtotal = 0;
     items.forEach((it, idx) => {
       subtotal += (it.price * (it.qty || 1));
-
       const div = document.createElement('div');
       div.className = 'item';
       div.innerHTML = `
@@ -117,21 +100,10 @@ small{color:var(--muted)}
       `;
       container.appendChild(div);
     });
-
-    const shipping = subtotal > 0 ? 50 : 0;
-    const total = subtotal + shipping;
-
-    document.getElementById('subtotal').textContent = `₹${subtotal}`;
+    const shipping = subtotal>0 ? 50 : 0;
+    document.getElementById('subtotal').textContent = `₹${subtotal.toFixed(0)}`;
     document.getElementById('shipping').textContent = `₹${shipping}`;
-    document.getElementById('total').textContent = `₹${total}`;
-
-    // Save order values to localStorage
-    document.getElementById("go-payment").onclick = function(e){
-      e.preventDefault();
-      localStorage.setItem("brew_order_total", total);
-      localStorage.setItem("brew_order_items", JSON.stringify(items));
-      window.location.href = "payment.html";
-    };
+    document.getElementById('total').textContent = `₹${(subtotal+shipping).toFixed(0)}`;
   }
 
   // events
@@ -140,10 +112,9 @@ small{color:var(--muted)}
     if(rem){
       const idx = Number(rem.getAttribute('data-remove'));
       const arr = read();
-      arr.splice(idx, 1);
+      arr.splice(idx,1);
       write(arr);
     }
-
     if(e.target.id === 'clear-cart'){
       localStorage.removeItem(KEY);
       render();
